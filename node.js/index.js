@@ -4,12 +4,12 @@ const ffmpeg = require('fluent-ffmpeg');
 const ffmpegPath = require('ffmpeg-static');
 const YouTubeSearchApi = require('youtube-search-api');
 
-// Configurar o caminho do FFmpeg
 ffmpeg.setFfmpegPath(ffmpegPath);
 
 async function searchYouTube(query) {
   try {
-    // Use `YouTubeSearchApi.GetData` para buscar resultados
+    // TODO: the debugger says:
+    // ! TypeError: YouTubeSearchApi.GetData is not a function
     const result = await YouTubeSearchApi.GetData(query, 1);
     
     if (result.items.length > 0) {
@@ -62,8 +62,8 @@ async function downloadMusicList(filePath, outputDir) {
   }
 }
 
-const musicListFile = 'songs.txt'; // Arquivo com os nomes das músicas
-const outputDirectory = 'musicas_baixadas';  // Diretório de saída
+const musicListFile = 'songs.txt';
+const outputDirectory = 'downloaded_songs';
 
 if (!fs.existsSync(outputDirectory)) {
   fs.mkdirSync(outputDirectory);
